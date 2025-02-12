@@ -3,8 +3,7 @@ package com.nexign.coffeeShop.service;
 import java.io.PrintStream;
 
 public class PrintService {
-    public void printReceipt(PrintStream out) {
-        out.println("Customer Name: " + customerName);
+    public void printReceipt(PrintStream out, Order order) {
         out.println("Items:");
 
         for (String item : items) {

@@ -2,7 +2,7 @@ package com.nexign.coffeeShop;
 
 import java.io.PrintStream;
 
-public class SpecialCoffeeOrder implements Order{
+public class SpecialCoffeeOrder {
     @Override
     public double calculateTotalPrice() {
         throw new IllegalArgumentException("Nexign is not allowed to order special orders");

@@ -6,14 +6,14 @@ import java.util.Scanner;
 public class CoffeeShop {
 
     private final PaymentProcessor processor = new PaymentProcessor();
-    private final CoffeeOrder order = new CoffeeOrder();
+    private final OrderItem orderItem = new OrderItem();
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
         PrintStream out = System.out;
         out.print("Enter customer name: ");
         String customerName = scanner.nextLine();
-        order.setCustomerName(customerName);
+        orderItem.setCustomerName(customerName);
 
         while (true) {
             out.print("Enter item to add (or 'done' to finish): ");
@@ -23,7 +23,7 @@ public class CoffeeShop {
                 break;
             }
 
-            order.addItem(input);
+            orderItem.addItem(input);
         }
 
         out.print("Choose payment method (Credit Card or Cash): ");
@@ -31,7 +31,7 @@ public class CoffeeShop {
         boolean success = processor.processPayment(paymentMethod);
         if (success) {
             out.println("Payment successful!");
-            order.printReceipt(out);
+            orderItem.printReceipt(out);
         } else {
             out.println("Payment failed.");
         }
