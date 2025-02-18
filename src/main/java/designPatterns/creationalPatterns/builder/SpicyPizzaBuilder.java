@@ -2,13 +2,15 @@ package designPatterns.creationalPatterns.builder;
 
 public class SpicyPizzaBuilder extends PizzaBuilder{
     @Override
-    public void buildDough() {
+    public PizzaBuilder buildDough() {
         pizza.setDough("Thick");
-        pizza.setSauce("Spicy");
+        return this;
     }
 
     @Override
-    public void buildSauce() {
-
+    public PizzaBuilder buildSauce() {
+        pizza.setSauce("Spicy");
+        return this;
     }
+
 }

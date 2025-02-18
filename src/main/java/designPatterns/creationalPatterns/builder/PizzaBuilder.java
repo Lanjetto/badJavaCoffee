@@ -3,10 +3,15 @@ package designPatterns.creationalPatterns.builder;
 public abstract class PizzaBuilder {
     protected Pizza pizza;
 
-    public void createPizza(){
+    public PizzaBuilder createPizza(){
         pizza = new Pizza();
+        return this;
     }
 
-    public abstract void buildDough();
-    public abstract void buildSauce();
+    public Pizza build() {
+        return pizza;
+    }
+
+    public abstract PizzaBuilder buildDough();
+    public abstract PizzaBuilder buildSauce();
 }

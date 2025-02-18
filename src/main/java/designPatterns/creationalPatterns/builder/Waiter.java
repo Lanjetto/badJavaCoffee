@@ -8,8 +8,10 @@ public class Waiter {
     }
 
     public void preparePizza() {
-        builder.createPizza();
-        builder.buildDough();
-        builder.buildSauce();
+        Pizza pizza = builder.createPizza()
+                .buildSauce()
+                .buildDough()
+                .build();
+
     }
 }

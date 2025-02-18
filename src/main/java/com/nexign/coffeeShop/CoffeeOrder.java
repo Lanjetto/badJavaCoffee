@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoffeeOrder implements Order{
+public class CoffeeOrder {
     private String customerName;
     private List<String> items = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class CoffeeOrder implements Order{
         items.add(item);
     }
 
-    @Override
+
     public double calculateTotalPrice() {
 
         double totalPrice = 0.0;
@@ -43,7 +43,7 @@ public class CoffeeOrder implements Order{
         return totalPrice;
     }
 
-    @Override
+
     public void printReceipt(PrintStream out) {
         out.println("Customer Name: " + customerName);
         out.println("Items:");
