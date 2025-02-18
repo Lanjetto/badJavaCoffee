@@ -1,4 +1,4 @@
-package com.nexign.coffeeShop;
+package com.nexign.coffeeShop.domain;
 
 import java.io.PrintStream;
 

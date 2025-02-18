@@ -1,6 +1,6 @@
-package com.nexign.coffeeShop;
+package com.nexign.coffeeShop.domain;
 
-public class Product {
+public abstract class Product {
     private String name;
     private double price;
 

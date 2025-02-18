@@ -1,5 +1,12 @@
 package com.nexign.coffeeShop;
 
+import com.nexign.coffeeShop.domain.*;
+import com.nexign.coffeeShop.domain.decorator.Sugar;
+import com.nexign.coffeeShop.repository.InMemoryCoffeeRepository;
+import com.nexign.coffeeShop.repository.ProductRepository;
+import com.nexign.coffeeShop.services.CardPayment;
+import com.nexign.coffeeShop.services.ConsolePrinter;
+
 import java.util.List;
 
 public class App {
@@ -7,14 +14,16 @@ public class App {
         CoffeeShop coffeeShop = new CoffeeShop();
         ConsolePrinter consolePrinter = new ConsolePrinter();
         CardPayment cardPayment = new CardPayment();
+        ProductRepository repository = new InMemoryCoffeeRepository();
 
-        Product p1 = new Product("cappuccino", 100.0);
-        Product p2 = new Product("espresso", 80.0);
 
-        OrderItem orderItem1 = new OrderItem(p1, 1);
-        OrderItem orderItem2 = new OrderItem(p2, 2);
+        Order order = new OrderBuilder(repository)
+                .addItem("cappuccino", 2)
+                .addItem("espresso", 1)
+                .addDrink("latte", CupSize.M, 2)
+                .addDrink("cappuccino", CupSize.M, new Sugar("сахар", 5.))
+                .build();
 
-        Order order = new Order(List.of(orderItem1, orderItem2));
         coffeeShop.createOrder(order, cardPayment, consolePrinter);
     }
 }

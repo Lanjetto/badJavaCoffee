@@ -1,4 +1,4 @@
-package com.nexign.coffeeShop;
+package com.nexign.coffeeShop.services;
 
 public class CashPayment implements PaymentService{
     @Override

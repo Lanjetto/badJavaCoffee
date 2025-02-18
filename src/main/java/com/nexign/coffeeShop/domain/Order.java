@@ -1,4 +1,4 @@
-package com.nexign.coffeeShop;
+package com.nexign.coffeeShop.domain;
 
 
 import java.time.LocalDateTime;
@@ -6,11 +6,11 @@ import java.util.List;
 
 //добавить копию в список
 public class Order {
-    private List<OrderItem> orderItems;
+    private List<OrderItemBase> orderItems;
     private LocalDateTime timeStamp = LocalDateTime.now();
     private double totalPrice;
 
-    public Order(List<OrderItem> orderItems) {
+    public Order(List<OrderItemBase> orderItems) {
         this.orderItems = orderItems;
         this.totalPrice = calculateTotalPrice();
     }
@@ -25,7 +25,7 @@ public class Order {
                 .sum();
     }
 
-    public List<OrderItem> getOrderItems() {
+    public List<OrderItemBase> getOrderItems() {
         return orderItems;
     }
 }

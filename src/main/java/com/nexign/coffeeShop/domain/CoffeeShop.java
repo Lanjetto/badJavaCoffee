@@ -1,4 +1,7 @@
-package com.nexign.coffeeShop;
+package com.nexign.coffeeShop.domain;
+
+import com.nexign.coffeeShop.services.PaymentService;
+import com.nexign.coffeeShop.services.PrintService;
 
 public class CoffeeShop {
 
