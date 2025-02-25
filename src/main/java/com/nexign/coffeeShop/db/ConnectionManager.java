@@ -14,12 +14,14 @@ public class ConnectionManager {
     private static final String PASSWORD = PropertiesUtil.get("db.password");
 
     private static ConnectionManager instance;
-
+    private Connection connection;
     private ConnectionManager() {
         try {
             Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
+            this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (ClassNotFoundException | SQLException e) {
             Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, e);
+            throw new RuntimeException();
         }
     }
 
@@ -31,7 +33,9 @@ public class ConnectionManager {
     }
 
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL,USER,PASSWORD);
+        if (connection == null || connection.isClosed()) {
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        }
 
 //        String createSql = """
 //                CREATE TABLE if not exist products (
@@ -54,7 +58,8 @@ public class ConnectionManager {
 //             var statement = connection.prepareStatement(createSql);) {
 //            statement.execute();
 
-        }
+        return connection;
+         }
     }
 //
 //    public static void main(String[] args) throws SQLException {
