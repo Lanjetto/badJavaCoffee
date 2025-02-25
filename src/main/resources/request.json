@@ -1,0 +1,25 @@
+{
+  "orderItems": [
+    {
+      "productName": "Cappuccino",
+      "size": "L",
+      "quantity": 1
+    },
+    {
+      "productName": "Cappuccino",
+      "size": "S",
+      "quantity": 1
+    },
+    {
+      "productName": "Espresso",
+      "size": "S",
+      "quantity": 3
+    },
+    {
+      "productName": "Pie",
+      "quantity": 1
+    }
+  ],
+  "paymentMethod": "CARD",
+  "receiptType": "CONSOLE"
+}

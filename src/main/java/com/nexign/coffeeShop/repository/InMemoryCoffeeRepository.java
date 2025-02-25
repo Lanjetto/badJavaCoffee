@@ -1,30 +1,30 @@
 package com.nexign.coffeeShop.repository;
 
-import com.nexign.coffeeShop.domain.Coffee;
-import com.nexign.coffeeShop.domain.CoffeeShop;
-import com.nexign.coffeeShop.domain.Product;
+import com.nexign.coffeeShop.domain.models.Product;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class InMemoryCoffeeRepository implements ProductRepository {
-    private Map<String, Double> coffeeMap = new HashMap<>();
+    private Map<Long, Product> coffeeMap = new HashMap<>();
 
     public InMemoryCoffeeRepository() {
-        coffeeMap.put("cappuccino", 100.0);
-        coffeeMap.put("latte", 120.0);
-        coffeeMap.put("espresso", 80.0);
+        initialize();
+    }
+
+    private void initialize() {
+        coffeeMap.put(1L, new Product(1L, "latte", 120.0, "COFFEE"));
+        coffeeMap.put(2L, new Product(2L, "espresso", 80.0, "COFFEE"));
+        coffeeMap.put(3L, new Product(3L,"cappuccino", 100.0, "COFFEE"));
+        coffeeMap.put(4L, new Product(4L,"pie", 100.0, "FOOD"));
     }
 
     @Override
-    public Optional<Double> findPriceByName(String productName) {
-        return Optional.ofNullable(coffeeMap.get(productName));
-    }
-
-    @Override
-    public Product findByName(String name) {
-        Double price = findPriceByName(name).orElseThrow();
-        return new Coffee(name, price);
+    public Optional<Product> findByName(String name) {
+        return coffeeMap.values()
+                .stream()
+                .filter(coffee -> coffee.getName().equalsIgnoreCase(name))
+                .findFirst();
     }
 }
