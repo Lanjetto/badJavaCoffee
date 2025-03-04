@@ -1,17 +1,19 @@
 package com.nexign.coffeeShop.services;
 
-import com.nexign.coffeeShop.domain.Order;
-import com.nexign.coffeeShop.domain.OrderItem;
-import com.nexign.coffeeShop.domain.OrderItemBase;
+import com.nexign.coffeeShop.domain.order.Order;
+import com.nexign.coffeeShop.domain.order.OrderItem;
 
 public class ConsolePrinter implements PrintService {
     @Override
-    public void print(Order order) {
-        System.out.println("Items:");
+    public String print(Order order) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Items:\n");
 
-        for (OrderItemBase item : order.getOrderItems()) {
-            System.out.println("- " + item);
+        for (OrderItem item : order.getOrderItems()) {
+            sb.append("- ").append(item).append("\n");
         }
-        System.out.println("Total Price: " + order.getTotalPrice());
+        sb.append("Total Price: ").append(order.calculateTotalPrice());
+        sb.append("\n").append("--------------------------");
+        return sb.toString();
     }
 }
