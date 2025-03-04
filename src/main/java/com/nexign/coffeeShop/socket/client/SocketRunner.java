@@ -1,4 +1,4 @@
-package com.nexign.coffeeShop.socket;
+package com.nexign.coffeeShop.socket.client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
