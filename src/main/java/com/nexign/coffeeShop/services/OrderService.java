@@ -31,7 +31,7 @@ public class OrderService {
     public Order createOrder(OrderRequest request) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (OrderItemRequest orderItem : request.getOrderItems()) {
-            var product = productRepository.findByName(orderItem.getProductName())
+            var product = productRepository.findByName(orderItem.getProductName().toLowerCase())
                     .orElseThrow(() -> new IllegalArgumentException("Product not found " + orderItem.getProductName()));
 
             var productType = product.getType().toLowerCase();
